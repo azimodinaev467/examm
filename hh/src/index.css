@@ -1,20 +1,5 @@
 @import "tailwindcss";
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #ffffff;
-  color: #374151;
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-}
+@custom-variant dark (&:where(.dark, .dark *));

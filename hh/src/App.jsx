@@ -1,54 +1,90 @@
 import { BrowserRouter, Routes, Route } from "react-router"
+import { ThemeProvider } from "./context/ThemeContext"
 import AuthFlow from "./pages/AuthFlow"
 import Login from "./pages/Login"
-import Users from "./pages/Users"
-import Home from "./pages/Home"
-import Products from "./pages/Products"
+import NewHome from "./pages/NewHome"
+import Info from "./pages/Info"
+import Favorites from "./pages/Favorites"
+import Cart from "./pages/Cart"
+import Prodduct from "./pages/Prodduct"
 import NotFound from "./pages/NotFound"
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/login"
-          element={
-            <AuthFlow>
-              <Login />
-            </AuthFlow>
-          }
-        />
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              <AuthFlow>
+                <Login />
+              </AuthFlow>
+            }
+          />
 
-        <Route
-          path="/"
-          element={
-            <AuthFlow>
-              <Home />
-            </AuthFlow>
-          }
-        />
+          <Route
+            path="/"
+            element={
+              <AuthFlow>
+                <NewHome />
+              </AuthFlow>
+            }
+          />
 
-        <Route
-          path="/users"
-          element={
-            <AuthFlow>
-              <Users />
-            </AuthFlow>
-          }
-        />
+          <Route
+            path="/favorites"
+            element={
+              <AuthFlow>
+                <Favorites />
+              </AuthFlow>
+            }
+          />
 
-        <Route
-          path="/products"
-          element={
-            <AuthFlow>
-              <Products />
-            </AuthFlow>
-          }
-        />
+          <Route
+            path="/cart"
+            element={
+              <AuthFlow>
+                <Cart />
+              </AuthFlow>
+            }
+          />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+          <Route
+            path="/checkout"
+            element={
+              <AuthFlow>
+                <Prodduct />
+              </AuthFlow>
+            }
+          />
+
+          <Route
+            path="/prodduct"
+            element={
+              <AuthFlow>
+                <Prodduct />
+              </AuthFlow>
+            }
+          />
+
+          <Route
+            path="/product/:id"
+            element={
+              <AuthFlow>
+                <Info />
+              </AuthFlow>
+            }
+          />
+
+          <Route path="/info/:id" element={<AuthFlow><Info /></AuthFlow>} />
+
+          <Route path="/info" element={<AuthFlow><Info /></AuthFlow>} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
