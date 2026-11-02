@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { useTranslation } from "react-i18next"
 import axios from "axios"
 import { api } from "../api/auth"
@@ -56,6 +56,7 @@ const NewHome = () => {
     { label: t("nav.shop"), key: "Shop" },
     { label: t("nav.plantCare"), key: "Plant Care" },
     { label: t("nav.blogs"), key: "Blogs" },
+    { label: "About", key: "About", to: "/abaut" },
   ]
 
   const sizes = [
@@ -210,18 +211,27 @@ const NewHome = () => {
           <ul className="hidden items-center gap-7 md:flex">
             {navLinks.map((link) => (
               <li key={link.key || link.label}>
-                <button
-                  onClick={() => setActiveNav(link.key || link.label)}
-                  className={`relative pb-1 text-sm font-medium transition ${activeNav === (link.key || link.label)
-                    ? "text-slate-900 dark:text-white"
-                    : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
-                    }`}
-                >
-                  {link.label}
-                  {activeNav === (link.key || link.label) && (
-                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-green-500" />
-                  )}
-                </button>
+                {link.to ? (
+                  <Link
+                    to={link.to}
+                    className="relative pb-1 text-sm font-medium text-slate-500 transition hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => setActiveNav(link.key || link.label)}
+                    className={`relative pb-1 text-sm font-medium transition ${activeNav === (link.key || link.label)
+                      ? "text-slate-900 dark:text-white"
+                      : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
+                      }`}
+                  >
+                    {link.label}
+                    {activeNav === (link.key || link.label) && (
+                      <span className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-green-500" />
+                    )}
+                  </button>
+                )}
               </li>
             ))}
           </ul>

@@ -7,6 +7,7 @@ import Info from "./pages/Info"
 import Favorites from "./pages/Favorites"
 import Cart from "./pages/Cart"
 import Prodduct from "./pages/Prodduct"
+import Abaut from "./pages/Abaut"
 import NotFound from "./pages/NotFound"
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
               </AuthFlow>
             }
           />
+
+          {/* This route renders the page exported from pages/Abaut.jsx. */}
+          <Route path="/abaut" element={<AuthFlow><Abaut /></AuthFlow>} />
 
           <Route
             path="/favorites"
